@@ -60,7 +60,9 @@ cv_show('img',img)
 ref = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 cv_show('ref',ref)
 # 二值图像
-ref = cv2.threshold(ref,10,255,cv2.THRESH_BINARY_INV)[1] # THRESH_BINARY_INV如果大于阈值，就将其设为0，否则设为最大值
+# 反二进制阈值化 (cv2.THRESH_BINARY_INV)，即将像素值大于阈值的设置为 0，小于等于阈值的设置为 255
+# 函数返回两个值：阈值本身和阈值处理后的图像数组。[1] 用于获取阈值处理后的图像数组
+ref = cv2.threshold(ref,10,255,cv2.THRESH_BINARY_INV)[1]
 cv_show('ref',ref)
 
 # 计算轮廓
